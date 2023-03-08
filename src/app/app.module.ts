@@ -16,6 +16,7 @@ import { AuthorComponent } from './author/author.component';
 const appRoutes: Routes = [
   {path: "dashboard", component: DashboardComponent},
   {path: "tickets", component: TicketComponent},
+  {path: "authors", component: AuthorComponent},
 ]
 
 @NgModule({

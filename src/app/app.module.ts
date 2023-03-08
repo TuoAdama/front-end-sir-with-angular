@@ -10,10 +10,12 @@ import { ProfileComponent } from './profile/profile.component';
 import {Route, RouterModule, Routes} from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TicketComponent } from './ticket/ticket.component';
+import { AuthorComponent } from './author/author.component';
 
 
 const appRoutes: Routes = [
-  {path: "dashboard", component: DashboardComponent}
+  {path: "dashboard", component: DashboardComponent},
+  {path: "tickets", component: TicketComponent},
 ]
 
 @NgModule({
@@ -26,6 +28,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     DashboardComponent,
     TicketComponent,
+    AuthorComponent,
   ],
   imports: [
     BrowserModule,

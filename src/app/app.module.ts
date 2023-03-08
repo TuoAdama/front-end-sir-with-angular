@@ -11,6 +11,7 @@ import {Route, RouterModule, Routes} from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { AuthorComponent } from './author/author.component';
+import { TicketItemComponent } from './ticket-item/ticket-item.component';
 
 
 const appRoutes: Routes = [
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
     DashboardComponent,
     TicketComponent,
     AuthorComponent,
+    TicketItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,14 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ProfileComponent } from './profile/profile.component';
+import {Route, RouterModule, Routes} from "@angular/router";
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TicketComponent } from './ticket/ticket.component';
+
+
+const appRoutes: Routes = [
+  {path: "dashboard", component: DashboardComponent}
+]
 
 @NgModule({
   declarations: [
@@ -15,10 +23,15 @@ import { ProfileComponent } from './profile/profile.component';
     FooterComponent,
     HeaderComponent,
     SearchbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    DashboardComponent,
+    TicketComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

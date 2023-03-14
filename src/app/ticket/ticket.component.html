@@ -22,10 +22,7 @@
           <h5 class="card-title">Liste des tickets</h5>
 
           <div class="list-group">
-            <app-ticket-item></app-ticket-item>
-            <app-ticket-item></app-ticket-item>
-            <app-ticket-item></app-ticket-item>
-            <app-ticket-item></app-ticket-item>
+            <app-ticket-item [ticket]="ticket" *ngFor="let ticket of tickets"></app-ticket-item>
           </div>
         </div>
       </div>

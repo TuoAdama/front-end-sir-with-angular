@@ -13,6 +13,7 @@ import { TicketComponent } from './ticket/ticket.component';
 import { AuthorComponent } from './author/author.component';
 import { TicketItemComponent } from './ticket-item/ticket-item.component';
 import { TicketFormComponent } from './ticket-form/ticket-form.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
 const appRoutes: Routes = [
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes
     )

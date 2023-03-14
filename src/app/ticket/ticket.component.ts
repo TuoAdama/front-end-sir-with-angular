@@ -24,7 +24,6 @@ export class TicketComponent implements OnInit{
       )
       .subscribe((value:Object) => {
           this.tickets = <Ticket[]>value;
-          console.log(this.tickets[0])
       })
   }
 

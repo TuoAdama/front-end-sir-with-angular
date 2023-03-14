@@ -7,18 +7,20 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ProfileComponent } from './profile/profile.component';
-import {Route, RouterModule, Routes} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { AuthorComponent } from './author/author.component';
 import { TicketItemComponent } from './ticket-item/ticket-item.component';
 import { TicketFormComponent } from './ticket-form/ticket-form.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
+import { SingleTicketComponent } from './single-ticket/single-ticket.component';
 
 
 const appRoutes: Routes = [
   {path: "", component: DashboardComponent},
   {path: "tickets", component: TicketComponent},
+  {path: "ticket/:id", component: SingleTicketComponent},
   {path: "authors", component: AuthorComponent},
   {path: "create-ticket", component: TicketFormComponent},
 ]
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
     AuthorComponent,
     TicketItemComponent,
     TicketFormComponent,
+    SingleTicketComponent,
   ],
   imports: [
     BrowserModule,

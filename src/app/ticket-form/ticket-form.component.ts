@@ -4,7 +4,7 @@ import {Ticket} from "../models/Ticket";
 import { TicketService } from '../services/ticket.service';
 import { catchError, throwError } from 'rxjs';
 import { Tag } from '../models/Tag';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { Form, FormBuilder, FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-ticket-form',
@@ -18,17 +18,11 @@ export class TicketFormComponent implements OnInit {
   ticket: Ticket = new Ticket()
   tags: Tag[] = []
   tagId?: number
-  formGroup: FormGroup
 
   constructor(private authorService: AuthorService,
               private ticketService: TicketService,
               private fb: FormBuilder) {
     this.authorId = authorService.getAuthor().id!
-    this.formGroup = this.fb.group({
-      title: "",
-      content: "",
-      tagId: "",
-    })
   }
   
   ngOnInit(): void {
@@ -41,8 +35,14 @@ export class TicketFormComponent implements OnInit {
     })
   }
 
-  onSubmit(form: any): void {
-    console.log(form);
+  onSubmit(form: NgForm): void {
+    if(form.valid){
+      console.log({
+        tag: this.tagId,
+        ticket: this.ticket
+      });
+      
+    }
   }
 
 }

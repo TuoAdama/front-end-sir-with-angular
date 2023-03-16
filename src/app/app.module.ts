@@ -13,6 +13,7 @@ import { TicketComponent } from './ticket/ticket.component';
 import { AuthorComponent } from './author/author.component';
 import { TicketItemComponent } from './ticket-item/ticket-item.component';
 import { TicketFormComponent } from './ticket-form/ticket-form.component';
+import { AuthorFormComponent } from './author-form/author-form.component';
 
 
 const appRoutes: Routes = [
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
   {path: "tickets", component: TicketComponent},
   {path: "authors", component: AuthorComponent},
   {path: "create-ticket", component: TicketFormComponent},
+  {path: "create-author", component: AuthorFormComponent},
 ]
 
 @NgModule({
@@ -35,6 +37,7 @@ const appRoutes: Routes = [
     AuthorComponent,
     TicketItemComponent,
     TicketFormComponent,
+    AuthorFormComponent,
   ],
   imports: [
     BrowserModule,

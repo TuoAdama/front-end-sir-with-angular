@@ -16,6 +16,7 @@ import { TicketFormComponent } from './ticket-form/ticket-form.component';
 import {HttpClientModule} from "@angular/common/http";
 import { SingleTicketComponent } from './single-ticket/single-ticket.component';
 import {NotFoundComponent} from "./not-found/not-found.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 const appRoutes: Routes = [
@@ -41,14 +42,16 @@ const appRoutes: Routes = [
     TicketItemComponent,
     TicketFormComponent,
     SingleTicketComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes
-    )
+    ),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

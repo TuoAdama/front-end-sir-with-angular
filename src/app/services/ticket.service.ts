@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Ticket} from "../models/Ticket";
+import {Tag} from "../models/Tag";
 
 
 @Injectable({
@@ -22,6 +23,11 @@ export class TicketService {
 
   getTicketById(id: number|string|null): Observable<Ticket>{
     const path = this.backendUrl+"/ticket/find/"+id
+    return this.httpClient.get(path);
+  }
+
+  getTags(): Observable<Object>{
+    const path = this.backendUrl+ "/tag/all"
     return this.httpClient.get(path);
   }
 

@@ -5,6 +5,7 @@ import { TicketService } from '../services/ticket.service';
 import { catchError, throwError } from 'rxjs';
 import { Tag } from '../models/Tag';
 import { Form, FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticket-form',
@@ -22,7 +23,7 @@ export class TicketFormComponent implements OnInit {
 
   constructor(private authorService: AuthorService,
               private ticketService: TicketService,
-              private fb: FormBuilder) {
+              private router: Router) {
     this.authorId = authorService.getAuthor().id!
   }
   
@@ -58,7 +59,7 @@ export class TicketFormComponent implements OnInit {
 
     this.ticketService.createTicket(data).subscribe((value) => {
       this.loading = false
-      console.log(value);
+      this.router.navigate(['/tickets'])
     })
   }
 

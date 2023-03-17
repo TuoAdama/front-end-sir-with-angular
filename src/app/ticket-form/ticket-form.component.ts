@@ -4,7 +4,7 @@ import {Ticket} from "../models/Ticket";
 import { TicketService } from '../services/ticket.service';
 import { catchError, throwError } from 'rxjs';
 import { Tag } from '../models/Tag';
-import { Form, FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({

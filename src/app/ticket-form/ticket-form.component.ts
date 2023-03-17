@@ -18,6 +18,7 @@ export class TicketFormComponent implements OnInit {
   ticket: Ticket = new Ticket()
   tags: Tag[] = []
   tagId?: number
+  loading: boolean = false
 
   constructor(private authorService: AuthorService,
               private ticketService: TicketService,
@@ -36,13 +37,29 @@ export class TicketFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    if(form.valid){
-      console.log({
-        tag: this.tagId,
-        ticket: this.ticket
-      });
-      
+
+    if(!form.valid){
+      return
     }
+    this.loading = true
+
+    const {title, content} = this.ticket
+
+    const data = {
+      title: title!,
+      content: content!,
+      author: {
+        id: this.authorService.getAuthor().id!
+      },
+      tags: [
+        {'id': this.tagId!}
+      ]
+    }
+
+    this.ticketService.createTicket(data).subscribe((value) => {
+      this.loading = false
+      console.log(value);
+    })
   }
 
 }

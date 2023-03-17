@@ -1,4 +1,4 @@
-import {Comments} from "./Comment";
+import {Comment} from "./Comment";
 import {Author} from "./Author";
 import {Tag} from "./Tag";
 

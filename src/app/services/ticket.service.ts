@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {Ticket} from "../models/Ticket";
 import {Tag} from "../models/Tag";
 
@@ -29,6 +29,20 @@ export class TicketService {
   getTags(): Observable<Object>{
     const path = this.backendUrl+ "/tag/all"
     return this.httpClient.get(path);
+  }
+
+  createTicket(body: {
+    title: string,
+    content: string,
+    author: {id: number},
+    tags: {id: number}[]
+  }): Observable<Object>{
+    const path = this.backendUrl+"/ticket/add"    
+    return this.httpClient.post(path, body).pipe(
+      catchError(error =>  {
+        return throwError(() => new Error(error.toString()))
+      })
+    )
   }
 
 }

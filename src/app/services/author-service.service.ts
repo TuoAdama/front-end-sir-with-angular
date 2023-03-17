@@ -9,7 +9,7 @@ export class AuthorService {
   constructor() { }
   getAuthor(): Author{
     const author = new Author();
-    author.id = 1
+    author.id = 2
     author.name = "Adama TUO"
     return author
   }

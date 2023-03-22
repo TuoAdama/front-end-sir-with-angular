@@ -17,6 +17,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { SingleTicketComponent } from './single-ticket/single-ticket.component';
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 const appRoutes: Routes = [
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
   imports: [
     ReactiveFormsModule,
     BrowserModule,
+    NgSelectModule,
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes

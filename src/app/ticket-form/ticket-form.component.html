@@ -6,6 +6,7 @@
   <section class="section">
     <form #form="ngForm" (ngSubmit)="onSubmit(form)">
       <div class="row">
+        <div class="alert alert-danger">{{selectedTags | json}}</div>
       </div>
       <div class="row">
         <div class="col-lg-8">
@@ -15,16 +16,16 @@
                 <input type="hidden" required [value]="authorId" name="author_id" id="author_id">
                 <div class="row my-3">
                   <div class="col-sm-12">
-                    <label for="form-label">Titre:</label>
-                    <input #title="ngModel" name="title" required type="text" 
+                    <label class="form-label">Titre:</label>
+                    <input #title="ngModel" name="title" required type="text"
                       [(ngModel)]="ticket.title" class="form-control" placeholder="Ex: Test de fonctionnalité">
                       <small class="text-danger" *ngIf="(title.touched || form.submitted) && title.invalid">Title is required</small>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <div class="col-sm-12">
-                    <label for="content" class="form-label">Description:</label>
-                    <textarea #content="ngModel" name="content" 
+                    <label class="content" class="form-label">Description:</label>
+                    <textarea #content="ngModel" name="content"
                     required placeholder="Description..." class="form-control" style="height: 100px" [(ngModel)]="ticket.content"></textarea>
                     <small class="text-danger" *ngIf="(content.touched || form.submitted) && content.invalid">
                       Veuillez entrer une description
@@ -41,10 +42,16 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-10">
-                  <label class="col-form-label">Tag</label>
-                  <select #tag="ngModel" [(ngModel)]="tagId" name="tagid" required class="form-select" aria-label="Default select example">
-                    <option *ngFor="let tag of tags" [value]="tag.id">{{tag.label}}</option>
-                  </select>
+                  <label class="col-form-label">Tags</label>
+                    <ng-select
+                              required
+                              #tag="ngModel" [items]="tagsExample"
+                               name="selectedTags"
+                               bindLabel="name"
+                               [multiple]="true"
+                               bindValue="id"
+                              [(ngModel)]="selectedTags">
+                    </ng-select>
                   <small class="text-danger" *ngIf="(tag.touched || form.submitted) && tag.invalid">Selectionner un tag</small>
                 </div>
               </div>

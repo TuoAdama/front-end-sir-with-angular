@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthorService} from "../services/author-service.service";
 import {Ticket} from "../models/Ticket";
 import { TicketService } from '../services/ticket.service';
@@ -21,18 +21,28 @@ export class TicketFormComponent implements OnInit {
   tagId?: number
   loading: boolean = false
 
+  tagsExample = [
+    {id: 1, name: 'Tag 1'},
+    {id: 2, name: 'Tag 2'},
+    {id: 3, name: 'Tag 3'},
+    {id: 4, name: 'Tag 4'},
+    {id: 5, name: 'Tag 5'},
+  ]
+
+  selectedTags: [] = []
+
   constructor(private authorService: AuthorService,
               private ticketService: TicketService,
               private router: Router) {
     this.authorId = authorService.getAuthor().id!
   }
-  
+
   ngOnInit(): void {
     this.ticketService.getTags().pipe(
       catchError(error =>  {
         return throwError(() => new Error(error.toString()))
       })
-    ).subscribe(value => {        
+    ).subscribe(value => {
         this.tags = <Tag[]>value
     })
   }
@@ -40,6 +50,7 @@ export class TicketFormComponent implements OnInit {
   onSubmit(form: NgForm): void {
 
     if(!form.valid){
+
       return
     }
     this.loading = true

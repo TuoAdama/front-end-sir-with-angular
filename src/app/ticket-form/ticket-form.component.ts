@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthorService} from "../services/author-service.service";
 import {Ticket} from "../models/Ticket";
 import { TicketService } from '../services/ticket.service';
-import { catchError, throwError } from 'rxjs';
+import {catchError, lastValueFrom, throwError} from 'rxjs';
 import { Tag } from '../models/Tag';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,20 +21,16 @@ export class TicketFormComponent implements OnInit {
   tagId?: number
   loading: boolean = false
 
-  tagsExample = [
-    {id: 1, name: 'Tag 1'},
-    {id: 2, name: 'Tag 2'},
-    {id: 3, name: 'Tag 3'},
-    {id: 4, name: 'Tag 4'},
-    {id: 5, name: 'Tag 5'},
-  ]
-
   selectedTags: [] = []
+
+  lastId = 5
 
   constructor(private authorService: AuthorService,
               private ticketService: TicketService,
               private router: Router) {
     this.authorId = authorService.getAuthor().id!
+    console.log(this.lastId)
+    this.onAddTag.bind(this)
   }
 
   ngOnInit(): void {
@@ -72,6 +68,13 @@ export class TicketFormComponent implements OnInit {
       this.loading = false
       this.router.navigate(['/tickets'])
     })
+  }
+
+
+  onAddTag = (label: string): Promise<Tag> => {
+    const tag = new Tag();
+    tag.label = label;
+    return lastValueFrom(this.ticketService.createTag(tag))
   }
 
 }

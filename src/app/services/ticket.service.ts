@@ -37,12 +37,23 @@ export class TicketService {
     author: {id: number},
     tags: {id: number}[]
   }): Observable<Object>{
-    const path = this.backendUrl+"/ticket/add"    
+    const path = this.backendUrl+"/ticket/add"
     return this.httpClient.post(path, body).pipe(
       catchError(error =>  {
         return throwError(() => new Error(error.toString()))
       })
     )
+  }
+
+  createTag(tag: Tag): Observable<Object>{
+    const path = this.backendUrl+"/tag/add"
+    this.httpClient.post(path, tag)
+    return this.httpClient.post(path, tag)
+      .pipe(
+        catchError(error =>  {
+          return throwError(() => new Error(error.toString()))
+        })
+      )
   }
 
 }

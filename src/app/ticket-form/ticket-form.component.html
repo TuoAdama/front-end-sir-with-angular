@@ -6,7 +6,8 @@
   <section class="section">
     <form #form="ngForm" (ngSubmit)="onSubmit(form)">
       <div class="row">
-        <div class="alert alert-danger">{{selectedTags | json}}</div>
+        <div class="alert alert-danger">data: {{tags | json}}</div>
+        <div class="alert alert-danger">selected: {{selectedTags | json}}</div>
       </div>
       <div class="row">
         <div class="col-lg-8">
@@ -45,11 +46,13 @@
                   <label class="col-form-label">Tags</label>
                     <ng-select
                               required
-                              #tag="ngModel" [items]="tagsExample"
+                              #tag="ngModel" [items]="tags"
                                name="selectedTags"
-                               bindLabel="name"
+                               bindLabel="label"
+                              [addTag]="onAddTag"
                                [multiple]="true"
                                bindValue="id"
+                              [hideSelected]="true"
                               [(ngModel)]="selectedTags">
                     </ng-select>
                   <small class="text-danger" *ngIf="(tag.touched || form.submitted) && tag.invalid">Selectionner un tag</small>

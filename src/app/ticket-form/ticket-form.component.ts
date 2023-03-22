@@ -46,22 +46,19 @@ export class TicketFormComponent implements OnInit {
   onSubmit(form: NgForm): void {
 
     if(!form.valid){
-
       return
     }
     this.loading = true
 
     const {title, content} = this.ticket
-
+    const tagIds = this.selectedTags.map(id => ({id}))
     const data = {
       title: title!,
       content: content!,
       author: {
         id: this.authorService.getAuthor().id!
       },
-      tags: [
-        {'id': this.tagId!}
-      ]
+      tags: [...tagIds]
     }
 
     this.ticketService.createTicket(data).subscribe((value) => {

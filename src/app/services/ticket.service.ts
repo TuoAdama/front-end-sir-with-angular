@@ -32,6 +32,7 @@ export class TicketService {
   }
 
   createTicket(body: {
+    id?: number,
     title: string,
     content: string,
     author: {id: number},
@@ -54,6 +55,16 @@ export class TicketService {
           return throwError(() => new Error(error.toString()))
         })
       )
+  }
+
+  updateTicket(body: any): Observable<Object>{
+    const path = this.backendUrl+"/ticket/update";
+    return this.httpClient.put(path, body)
+    .pipe(
+      catchError(error =>  {
+        return throwError(() => new Error(error.toString()))
+      })
+    )
   }
 
 }

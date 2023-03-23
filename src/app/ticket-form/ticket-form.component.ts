@@ -28,6 +28,7 @@ export class TicketFormComponent implements OnInit {
               private ticketService: TicketService,
               private router: Router) {
     this.onAddTag.bind(this)
+    this.onAddTag.bind(this)
     this.authorId = authorService.getAuthor().id!
   }
 
@@ -55,28 +56,35 @@ export class TicketFormComponent implements OnInit {
     }
     this.loading = true
 
-    const {title, content} = this.ticket
+    const {title, content, id} = this.ticket
     const tagIds = this.selectedTags.map(id => ({id}))
     const data = {
+      id,
       title: title!,
       content: content!,
       author: {
         id: this.authorService.getAuthor().id!
       },
-      tags: [...tagIds]
+      tags: [...tagIds]                      
     }
 
-    this.ticketService.createTicket(data).subscribe((value) => {
-      this.loading = false
-      this.router.navigate(['/tickets'])
-    })
+    if(this.edit){
+      this.ticketService.updateTicket(data).subscribe(this.handleAfterSubmit)
+    }else{
+      this.ticketService.createTicket(data).subscribe(this.handleAfterSubmit)
+    }
   }
 
 
-  onAddTag = (label: string): Promise<Tag> => {
+  onAddTag = (label: string): Promise<Tag> => {                                                                                                                                                             
     const tag = new Tag();
     tag.label = label;
     return lastValueFrom(this.ticketService.createTag(tag))
+  }
+
+  handleAfterSubmit = (value: any) => {
+    this.loading = false
+    this.router.navigate(['/tickets'])
   }
 
 }

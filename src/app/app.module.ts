@@ -18,12 +18,16 @@ import { SingleTicketComponent } from './single-ticket/single-ticket.component';
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NgSelectModule } from '@ng-select/ng-select';
+import { EditTicketComponent } from './pages/edit-ticket/edit-ticket.component';
+import { CreateTicketComponent } from './pages/create-ticket/create-ticket.component';
 
 
 const appRoutes: Routes = [
   {path: "", component: DashboardComponent},
   {path: "tickets", component: TicketComponent},
+  {path: "ticket/create", component: CreateTicketComponent},
   {path: "ticket/:id", component: SingleTicketComponent},
+  {path: "ticket/edit/:id", component: EditTicketComponent},
   {path: "authors", component: AuthorComponent},
   {path: "create-ticket", component: TicketFormComponent},
   {path: "**", component: NotFoundComponent},
@@ -44,6 +48,8 @@ const appRoutes: Routes = [
     TicketFormComponent,
     SingleTicketComponent,
     NotFoundComponent,
+    EditTicketComponent,
+    CreateTicketComponent,
   ],
   imports: [
     ReactiveFormsModule,

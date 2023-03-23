@@ -1,0 +1,7 @@
+<div *ngIf="!ticket">
+    <h3 class="text-danger">Chargement...</h3>
+</div>
+
+<div *ngIf="ticket">
+    <app-ticket-form [edit]="true" [ticket]="ticket"></app-ticket-form>
+</div>

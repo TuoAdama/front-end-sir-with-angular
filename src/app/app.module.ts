@@ -20,6 +20,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NgSelectModule } from '@ng-select/ng-select';
 import { EditTicketComponent } from './pages/edit-ticket/edit-ticket.component';
 import { CreateTicketComponent } from './pages/create-ticket/create-ticket.component';
+import {AuthorFormComponent} from "./author-form/author-form.component";
 
 
 const appRoutes: Routes = [
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     DashboardComponent,
     TicketComponent,
     AuthorComponent,
+    AuthorFormComponent,
     TicketItemComponent,
     TicketFormComponent,
     SingleTicketComponent,

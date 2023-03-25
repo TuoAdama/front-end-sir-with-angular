@@ -1,0 +1,24 @@
+.app-card {
+  position: relative;
+  background: #fff;
+  border-radius: 0.25rem;
+}
+
+.app-card .app-card-header {
+  border-bottom: 1px solid #e7e9ed;
+}
+
+.app-card-notification .notification-title {
+  font-size: 1.325rem;
+  font-weight: bold;
+}
+
+.app-card-notification .notification-meta {
+  font-size: .75rem;
+  color: #828d9f;
+}
+
+h4 {
+  color: #252930;
+  font-weight: 600;
+}

@@ -12,11 +12,13 @@ import {Observable, switchMap} from "rxjs";
 export class SingleTicketComponent implements OnInit{
 
   ticket?: Ticket
+  loading: boolean = false
 
   constructor(private ticketService: TicketService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
         const id = params.get("id");
@@ -26,8 +28,8 @@ export class SingleTicketComponent implements OnInit{
         return new Observable<Ticket>()
       })
     ).subscribe((value: Ticket) => {
+        this.loading = false;
         this.ticket = value
-        console.log(this.ticketService)
     })
   }
 }

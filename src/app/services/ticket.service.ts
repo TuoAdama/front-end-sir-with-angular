@@ -46,7 +46,7 @@ export class TicketService {
     )
   }
 
-  createTag(tag: Tag): Observable<Object>{
+  createTag(tag: Tag): Observable<any>{
     const path = this.backendUrl+"/tag/add"
     this.httpClient.post(path, tag)
     return this.httpClient.post(path, tag)

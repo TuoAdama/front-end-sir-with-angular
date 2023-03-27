@@ -1,6 +1,7 @@
-import {Comment} from "./Comment";
 import {Author} from "./Author";
 import {Tag} from "./Tag";
+import {Comment} from "./Comment";
+
 
 export class Ticket {
   id?: number

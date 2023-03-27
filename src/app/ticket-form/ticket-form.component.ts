@@ -33,7 +33,7 @@ export class TicketFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this.ticketService.getTags().pipe(
       catchError(error =>  {
         return throwError(() => new Error(error.toString()))
@@ -65,7 +65,7 @@ export class TicketFormComponent implements OnInit {
       author: {
         id: this.authorService.getAuthor().id!
       },
-      tags: [...tagIds]                      
+      tags: [...tagIds]
     }
 
     if(this.edit){
@@ -76,8 +76,8 @@ export class TicketFormComponent implements OnInit {
   }
 
 
-  onAddTag = (label: string): Promise<Tag> => {                                                                                                                                                             
-    const tag = new Tag();
+  onAddTag = (label: string): Promise<Tag> => {
+    const tag: Tag = {label}
     tag.label = label;
     return lastValueFrom(this.ticketService.createTag(tag))
   }

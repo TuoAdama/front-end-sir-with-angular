@@ -21,6 +21,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { EditTicketComponent } from './pages/edit-ticket/edit-ticket.component';
 import { CreateTicketComponent } from './pages/create-ticket/create-ticket.component';
 import {AuthorFormComponent} from "./author-form/author-form.component";
+import { CommentItemComponent } from './comment-item/comment-item.component';
 
 
 const appRoutes: Routes = [
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     NotFoundComponent,
     EditTicketComponent,
     CreateTicketComponent,
+    CommentItemComponent,
   ],
   imports: [
     ReactiveFormsModule,

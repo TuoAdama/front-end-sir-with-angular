@@ -1,5 +1,6 @@
-export class Comment {
-  id?: number
-  title?: string
-  content?: string
+import {Author} from "./Author";
+
+export interface Comment {
+  author: Author
+  content: string
 }

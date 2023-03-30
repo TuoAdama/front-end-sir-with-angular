@@ -32,7 +32,7 @@ const appRoutes: Routes = [
   {path: "ticket/edit/:id", component: EditTicketComponent},
   {path: "authors", component: AuthorComponent},
   {path: "create-ticket", component: TicketFormComponent},
-  {path: "**", component: NotFoundComponent},
+  {path: "create-author", component: AuthorFormComponent},
 ]
 
 @NgModule({
@@ -50,7 +50,6 @@ const appRoutes: Routes = [
     TicketItemComponent,
     TicketFormComponent,
     SingleTicketComponent,
-    NotFoundComponent,
     EditTicketComponent,
     CreateTicketComponent,
     CommentItemComponent,

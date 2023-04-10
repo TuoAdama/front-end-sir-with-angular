@@ -24,16 +24,19 @@
     </div><!--//app-card-header-->
     <div class="app-card-body px-5 py-4">
       <div class="notification-content">{{ticket.content}}</div>
-    </div><!--//app-card-body-->
+    </div>
   </div>
+
+  <!-- Begin Comment form-->
 
   <div class="card">
     <div class="card-body">
       <h2 class="card-title">Commenter</h2>
       <div class="card-text">
-        <form action="">
+        <form (ngSubmit)="onComment(form)" #form="ngForm">
           <div class="form-group">
-            <textarea placeholder="Ex: Description du commentaire" class="form-control"></textarea>
+            <textarea #content="ngModel" [(ngModel)]="commentContent" name="c" required placeholder="Ex: Description du commentaire" class="form-control"></textarea>
+            <small *ngIf="content.invalid && form.submitted " class="text-danger">Ne peut être vide</small>
           </div>
           <div class="mt-3">
             <button type="submit" class="btn btn-primary">Commenter</button>
@@ -41,5 +44,12 @@
         </form>
       </div>
     </div>
+  </div>
+
+  <!-- End comment form-->
+  <!-- Begin listing comments-->
+  <div>
+    <app-comment-item [comment]="commentItem" *ngFor="let commentItem of comments">
+    </app-comment-item>
   </div>
 </div>

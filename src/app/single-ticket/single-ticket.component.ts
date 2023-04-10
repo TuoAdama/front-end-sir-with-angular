@@ -3,6 +3,9 @@ import {TicketService} from "../services/ticket.service";
 import {Ticket} from "../models/Ticket";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {Observable, switchMap} from "rxjs";
+import {AuthorService} from "../services/author-service.service";
+import {NgForm} from "@angular/forms"
+import {Comment} from "../models/Comment"
 
 @Component({
   selector: 'app-single-ticket',
@@ -13,8 +16,13 @@ export class SingleTicketComponent implements OnInit{
 
   ticket?: Ticket
   loading: boolean = false
+  commentContent: string = ""
 
-  constructor(private ticketService: TicketService, private route: ActivatedRoute) {
+  comments: Comment[] = [];
+
+  constructor(private ticketService: TicketService,
+              private route: ActivatedRoute,
+              private authorService: AuthorService) {
   }
 
   ngOnInit(): void {
@@ -30,6 +38,24 @@ export class SingleTicketComponent implements OnInit{
     ).subscribe((value: Ticket) => {
         this.loading = false;
         this.ticket = value
+    })
+  }
+
+  onComment(form: NgForm){
+    if(!form.valid) return
+    const authorId = this.authorService.getAuthor().id
+    const body = {
+      ticket:{
+        id: this.ticket?.id!
+      },
+      author:{
+        id: authorId!
+      },
+      content: this.commentContent
+    }
+    this.ticketService.comment(body).subscribe((value) => {
+        const res: Comment = value as Comment;
+        this.comments.push(res)
     })
   }
 }

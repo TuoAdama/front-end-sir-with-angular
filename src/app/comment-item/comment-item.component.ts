@@ -10,7 +10,6 @@ export class CommentItemComponent {
   @Input() comment!: Comment
 
   constructor() {
-    this.comment.content = ""
   }
 
 }

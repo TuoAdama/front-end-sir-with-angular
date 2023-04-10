@@ -67,4 +67,17 @@ export class TicketService {
     )
   }
 
+  comment(body: {
+    ticket: {id:number|string},
+    author: {id:number|string},
+    content:string
+  }): Observable<Object>{
+    const path = this.backendUrl+"/comment/add"
+    return this.httpClient.post(path, body)
+                          .pipe(
+                          catchError(error =>  {
+                            return throwError(() => new Error(error.toString()))
+                          }))
+  }
+
 }

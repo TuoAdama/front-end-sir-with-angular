@@ -1,16 +1,29 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Author} from "../models/Author";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorService {
 
-  constructor() { }
+  private backendUrl:string = "http://localhost:8080/author";
+
+  currentUser?: Author;
+
+  constructor(private httpClient: HttpClient) { }
   getAuthor(): Author{
-    const author = new Author();
-    author.id = 7
-    author.name = "Adama TUO"
-    return author
+    return {
+      id: 5,
+      name: "Adama TUO",
+      email: "tuoadama17@gmail.com",
+      password: "12345"
+    }
+  }
+
+  createAuthor(author: Author): Observable<Author>{
+    const path = this.backendUrl+"/add"
+    return this.httpClient.post(path, author) as Observable<Author>
   }
 }

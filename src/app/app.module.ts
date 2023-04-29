@@ -22,11 +22,15 @@ import { EditTicketComponent } from './pages/edit-ticket/edit-ticket.component';
 import { CreateTicketComponent } from './pages/create-ticket/create-ticket.component';
 import {AuthorFormComponent} from "./author-form/author-form.component";
 import { CommentItemComponent } from './comment-item/comment-item.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const appRoutes: Routes = [
   {path: "", component: DashboardComponent},
+  {path: "login", component: LoginComponent},
   {path: "tickets", component: TicketComponent},
+  {path: "register", component: RegisterComponent},
   {path: "ticket/create", component: CreateTicketComponent},
   {path: "ticket/:id", component: SingleTicketComponent},
   {path: "ticket/edit/:id", component: EditTicketComponent},
@@ -53,6 +57,8 @@ const appRoutes: Routes = [
     EditTicketComponent,
     CreateTicketComponent,
     CommentItemComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     ReactiveFormsModule,

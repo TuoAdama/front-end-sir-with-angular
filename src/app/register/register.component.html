@@ -1,0 +1,51 @@
+<div class="container-fluid">
+
+  <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+          <div class="card mb-3">
+
+            <div class="card-body">
+
+              <div class="pt-4 pb-2">
+                <h5 class="card-title text-center pb-0 fs-4">Création de compte</h5>
+              </div>
+
+              <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+                <div class="col-12">
+                  <label for="yourName" class="form-label">Nom:</label>
+                  <input formControlName="name" placeholder="exemple: John" type="text" name="name" class="form-control" id="yourName" required>
+                  <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                </div>
+
+                <div class="col-12">
+                  <label for="email" class="form-label">Email:</label>
+                  <input formControlName="email" placeholder="exemple: example@domain.com" type="email" name="email" class="form-control" id="email" required>
+                  <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                </div>
+
+                <div class="col-12">
+                  <label for="yourPassword" class="form-label">Password</label>
+                  <input formControlName="password"  type="password" name="password" class="form-control" id="yourPassword" required>
+                  <div class="invalid-feedback">Please enter your password!</div>
+                </div>
+
+                <div class="col-12">
+                  <button class="btn btn-primary w-100" type="submit" [disabled]="loading">{{loading ? "Chargement":"Créer un compte"}}</button>
+                </div>
+                <div class="col-12">
+                  <p class="small mb-0">Avez-vous déjà un compte ? <a routerLink="/login">Se connecter</a></p>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div>

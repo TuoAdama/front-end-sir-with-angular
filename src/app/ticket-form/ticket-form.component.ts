@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {AuthorService} from "../services/author-service.service";
+import {AuthorService} from "../services/author-service";
 import {Ticket} from "../models/Ticket";
 import { TicketService } from '../services/ticket.service';
 import {catchError, lastValueFrom, throwError} from 'rxjs';

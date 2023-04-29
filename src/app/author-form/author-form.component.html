@@ -10,15 +10,21 @@
         <div class="card">
           <div class="card-body">
             <!-- General Form Elements -->
-            <form>
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
               <div class="row my-3">
                 <div class="col-sm-12">
-                  <input type="text" class="form-control" placeholder="First name">
+                  <input #firstName type="text" class="form-control" placeholder="First name" name="firstName" ngModel>
                 </div>
               </div>
               <div class="row mb-3">
                 <div class="col-sm-12">
-                  <input placeholder="Last name" class="form-control" >
+                  <input #lastName placeholder="Last name" class="form-control" name="lastName" ngModel >
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12">
+                  <button type="submit" class="btn btn-lg btn-primary">Créer</button>
                 </div>
               </div>
             </form><!-- End General Form Elements -->
@@ -27,11 +33,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <button class="btn btn-lg btn-primary">Créer</button>
-      </div>
-    </div>
+
 
   </section>
 

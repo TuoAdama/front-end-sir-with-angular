@@ -24,10 +24,11 @@ import {AuthorFormComponent} from "./author-form/author-form.component";
 import { CommentItemComponent } from './comment-item/comment-item.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AdminTemplateComponent } from './admin-template/admin-template.component';
 
 
 const appRoutes: Routes = [
-  {path: "", component: DashboardComponent},
+  {path: "admin", component: AdminTemplateComponent},
   {path: "login", component: LoginComponent},
   {path: "tickets", component: TicketComponent},
   {path: "register", component: RegisterComponent},
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
     CommentItemComponent,
     LoginComponent,
     RegisterComponent,
+    AdminTemplateComponent,
   ],
   imports: [
     ReactiveFormsModule,

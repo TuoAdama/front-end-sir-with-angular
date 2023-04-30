@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TicketService} from "../services/ticket.service";
 import {Ticket} from "../models/Ticket";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Observable, switchMap} from "rxjs";
 import {AuthorService} from "../services/author-service.service";
 import {NgForm} from "@angular/forms"
@@ -22,6 +22,7 @@ export class SingleTicketComponent implements OnInit{
 
   constructor(private ticketService: TicketService,
               private route: ActivatedRoute,
+              private router:Router,
               private authorService: AuthorService) {
   }
 
@@ -42,8 +43,13 @@ export class SingleTicketComponent implements OnInit{
   }
 
   onComment(form: NgForm){
+    const author = this.authorService.getAuthor();
+    if(!author){
+      this.router.navigateByUrl("/login");
+      return
+    }
     if(!form.valid) return
-    const authorId = this.authorService.getAuthor().id
+    const authorId = author.id
     const body = {
       ticket:{
         id: this.ticket?.id!

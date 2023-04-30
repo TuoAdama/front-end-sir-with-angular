@@ -28,7 +28,6 @@ import { AdminTemplateComponent } from './admin-template/admin-template.componen
 
 
 const appRoutes: Routes = [
-  {path: "admin", component: AdminTemplateComponent},
   {path: "login", component: LoginComponent},
   {path: "tickets", component: TicketComponent},
   {path: "register", component: RegisterComponent},

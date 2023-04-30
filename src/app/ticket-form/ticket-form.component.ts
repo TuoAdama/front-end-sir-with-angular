@@ -29,7 +29,12 @@ export class TicketFormComponent implements OnInit {
               private router: Router) {
     this.onAddTag.bind(this)
     this.onAddTag.bind(this)
-    this.authorId = authorService.getAuthor().id!
+    const author = authorService.getAuthor();
+    if(author == undefined){
+      router.navigateByUrl("/login");
+      return
+    }
+    this.authorId = author.id!
   }
 
   ngOnInit(): void {
@@ -63,7 +68,7 @@ export class TicketFormComponent implements OnInit {
       title: title!,
       content: content!,
       author: {
-        id: this.authorService.getAuthor().id!
+        id: this.authorId
       },
       tags: [...tagIds]
     }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-ticket',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-ticket.component.css']
 })
 export class CreateTicketComponent {
+  constructor(private router: Router) {
+    console.log("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
+  }
 
 }

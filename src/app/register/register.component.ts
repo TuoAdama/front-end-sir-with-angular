@@ -24,11 +24,20 @@ export class RegisterComponent {
   onRegister() {
     this.loading = true
     const {name, email, password} = this.registerForm.value
+    if(!this.registerForm.valid){
+      return
+    }
     const author: Author = {name, email, password}
-    this.authorService.createAuthor(author).subscribe(response => {
-      console.log(response);
-      this.loading = false;
-    })
+    this.authorService.createAuthor(author).subscribe({
+      next: response => {
+        console.log(response);
+        this.loading = false;
+        this.router.navigateByUrl("/");
+      },
+      error: (error) => {
+        console.log(error);
+      }
+      })
 
     this.router.navigateByUrl("/")
   }

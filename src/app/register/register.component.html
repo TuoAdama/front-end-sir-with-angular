@@ -13,11 +13,10 @@
                 <h5 class="card-title text-center pb-0 fs-4">Création de compte</h5>
               </div>
 
-              <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+              <form #form="ngForm" class="row g-3" [formGroup]="registerForm" (ngSubmit)="onRegister()">
                 <div class="col-12">
                   <label for="yourName" class="form-label">Nom:</label>
-                  <input formControlName="name" placeholder="exemple: John" type="text" name="name" class="form-control" id="yourName" required>
-                  <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                  <input formControlName="name" placeholder="exemple: John" type="text" class="form-control" id="yourName" required>
                 </div>
 
                 <div class="col-12">

@@ -13,17 +13,22 @@ export class AuthorService {
   currentUser?: Author;
 
   constructor(private httpClient: HttpClient) { }
-  getAuthor(): Author{
-    return {
-      id: 5,
-      name: "Adama TUO",
-      email: "tuoadama17@gmail.com",
-      password: "12345"
+  getAuthor(): Author | undefined {
+    const user = localStorage.getItem("author")
+    if(user != null){
+      this.currentUser = JSON.parse(user);
+      return this.currentUser!;
     }
+    return undefined
   }
 
   createAuthor(author: Author): Observable<Author>{
     const path = this.backendUrl+"/add"
     return this.httpClient.post(path, author) as Observable<Author>
+  }
+
+  login(username:string, password:string): Observable<any> {
+    const path = this.backendUrl+"/login";
+    return this.httpClient.post(path, {username, password})
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Author} from "../models/Author";
 import {AuthorService} from "../services/author-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -8,8 +9,13 @@ import {AuthorService} from "../services/author-service.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  author: Author;
-  constructor(private authorService: AuthorService) {
-    this.author = authorService.currentUser!
+  currentAuthor!: Author;
+  constructor(private authorService: AuthorService, private router: Router) {
+    const author = authorService.getAuthor();
+    if(author == undefined){
+      router.navigateByUrl("/login")
+      return
+    }
+    this.currentAuthor = author!
   }
 }
